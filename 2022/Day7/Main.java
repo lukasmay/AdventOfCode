@@ -30,7 +30,6 @@ class Main {
 		ArrayList<String[]> directories = new ArrayList<String[]>();
 		String line = "";
 		String location = "/";
-		String[] holder = {"", ""};
 		boolean getInfo = false;
 		try {
 			Scanner scanner = new Scanner(new File("input.txt"));

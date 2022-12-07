@@ -1,24 +1,26 @@
+import java.util.ArrayList;
+
 public class File{
-	private String[] path;//Switch to arraylist
+	private ArrayList<String> path;
 	private int size;
 	private String directory;
 
-	public File(String[] path, int size, String directory){
+	public File(ArrayList<String> path, int size, String directory){
 		this.path = path;
 		this.size = size;
 		this.directory = directory;
 	}
-
-	public String[] getPath() {
-		return path;
+	
+	public ArrayList<String> getPath() {
+		return this.path;
 	}
 
-	public void setPath(String[] path) {
+	public void setPath(ArrayList<String> path) {
 		this.path = path;
 	}
 
 	public int getSize() {
-		return size;
+		return this.size;
 	}
 
 	public void setSize(int size) {
@@ -26,7 +28,7 @@ public class File{
 	}
 
 	public String getDirectory() {
-		return directory;
+		return this.directory;
 	}
 
 	public void setDirectory(String directory) {
