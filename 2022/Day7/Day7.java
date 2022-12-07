@@ -31,8 +31,6 @@ public class Day7 {
                 currentDirectory.addFile(de);
                 allDirectories.add(de);
             } else {
-                System.out.println(Long.parseLong(linearr[0]));
-                System.out.println(linearr[0]);
                 currentDirectory.addFile(new FileEntry(linearr[1], Long.parseLong(linearr[0])));
             }
         }
