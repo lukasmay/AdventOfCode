@@ -1,4 +1,4 @@
-file = open('Data.txt','r')
+file = open('input.txt','r')
 mostCalories = [0]
 currentElf = 0
 for line in file:
