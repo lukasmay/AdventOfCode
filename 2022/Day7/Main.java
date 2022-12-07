@@ -34,8 +34,9 @@ class Main {
 		String location = "/";
 		String currentDir = "";
 		boolean getInfo = false;
+		Dir workingDir = new Dir();
 		try {
-			Scanner scanner = new Scanner(new File("input.txt"));
+			Scanner scanner = new Scanner(new File("2022/Day7/input.txt"));
 			while (scanner.hasNextLine()) {
 				line = scanner.nextLine();
 				if (getInfo && !(line.substring(0, 1).equals("$"))){
@@ -45,7 +46,9 @@ class Main {
 						if (dir.get(currentDir) == null){
 							dir.put(currentDir, new Dir(location, line.substring(4, line.length())));
 						} else {
-							dir.put(dir.get(currentDir).addFiles(new File(Integer.valueOf(line.substring(0, line.indexOf(" "))), currentDir, line.substring(line.indexOf(" ")+1, line.length()))));
+							workingDir = dir.get(currentDir);
+							workingDir.addFiles(new FileStuff(Integer.valueOf(line.substring(0, line.indexOf(" "))), currentDir, line.substring(line.indexOf(" ")+1, line.length())));
+							dir.put(currentDir, workingDir);
 						}
 						
 					}
@@ -55,7 +58,7 @@ class Main {
 						getInfo = true;
 					} else if (line.equals("$ cd ..")){
 						location = location.substring(0, location.lastIndexOf("@"));
-						currentDir = location.substring(location.lastIndexOf("@"), location.length());
+						//currentDir = location.substring(location.lastIndexOf("@"), location.length());
 					} else if (line.equals("$ cd /")){
 						location = "/";
 						currentDir = "/";
@@ -65,9 +68,9 @@ class Main {
 					}
 				}
 
-			
 				
 		}
+		System.out.println(dir);
 			
 			
 		} catch (FileNotFoundException e) {

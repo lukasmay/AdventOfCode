@@ -1,21 +1,21 @@
 import java.util.ArrayList;
 
-public class File{
+public class FileStuff{
 	private ArrayList<String> path;
 	private int size;
 	private String directory;
 	private String name;
 
-	public File(ArrayList<String> path, int size, String directory, String name){
+	public FileStuff(ArrayList<String> path, int size, String directory, String name){
 		this.path = path;
 		this.size = size;
 		this.directory = directory;
 		this.name = name;
 	}
-	public File(){
+	public FileStuff(){
 
 	}
-	public File(int size, String directory, String name){
+	public FileStuff(int size, String directory, String name){
 		this.size = size;
 		this.name = name;
 		this.directory = directory;

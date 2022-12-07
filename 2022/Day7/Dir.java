@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
-//This would have a method to add all the file size up useing a foreach loop.
+//This would have a method to add all the FileStuff size up useing a foreach loop.
 public class Dir{
-	private ArrayList<File> files = new ArrayList<File>();
+	private ArrayList<FileStuff> files = new ArrayList<FileStuff>();
 	private ArrayList<Dir> childDir = new ArrayList<Dir>();
 	private String path;
 	private int size;
 	private String name;
 
-	public Dir(ArrayList<File> files, ArrayList<Dir> childDir, String path, int size, String name) {
+	public Dir(ArrayList<FileStuff> files, ArrayList<Dir> childDir, String path, int size, String name) {
 		this.files = files;
 		this.childDir = childDir;
 		this.path = path;
@@ -31,14 +31,14 @@ public class Dir{
 	public void setName(String name){
 		this.name = name;
 	}
-	public ArrayList<File> getFiles() {
+	public ArrayList<FileStuff> getFiles() {
 		return this.files;
 	}
 
-	public void setFiles(ArrayList<File> files) {
+	public void setFiles(ArrayList<FileStuff> files) {
 		this.files = files;
 	}
-	public void addFiles(File file){
+	public void addFiles(FileStuff file){
 		this.files.add(file);
 	}
 
