@@ -29,7 +29,7 @@ class Main {
 	public static void part1(){
 		HashMap<String, Dir> dir = new HashMap<String, Dir>();
 
-		ArrayList<String[]> directories = new ArrayList<String[]>();
+		ArrayList<String> directories = new ArrayList<String>();
 		String line = "";
 		String location = "/";
 		String currentDir = "";
@@ -41,6 +41,10 @@ class Main {
 				line = scanner.nextLine();
 				if (getInfo && !(line.substring(0, 1).equals("$"))){
 					if (line.substring(0, 3).equals("dir")){
+						if (!(directories.contains(currentDir))){
+							directories.add(currentDir);
+						}
+						//This needs to be reworked to see if it exists already
 						dir.put(currentDir, new Dir(location, line.substring(4, line.length())));
 					} else {
 						if (dir.get(currentDir) == null){
@@ -71,6 +75,15 @@ class Main {
 				
 		}
 		System.out.println(dir);
+		System.out.println();
+		System.out.println(dir.size());
+		System.out.println(directories.size());
+		System.out.println();
+		System.out.println(directories);
+		for (String i : directories){
+
+		}
+		
 			
 			
 		} catch (FileNotFoundException e) {
