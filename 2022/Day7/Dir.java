@@ -65,4 +65,11 @@ public class Dir{
 	public void setSize(int size) {
 		this.size = size;
 	}
+	public int sum(){
+		int i  = 0;
+		for (FileStuff stuff : this.files){
+			i += stuff.getSize();
+		}
+		return i;
+	}
 }

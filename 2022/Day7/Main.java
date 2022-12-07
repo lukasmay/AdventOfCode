@@ -9,17 +9,9 @@ First find out how to get the data from the file. Goal to get a tree mapped out
 	
 Then find the totals of all directories and add them if they are less than 100,000
 
-overall keep the logic just the storing of the values change
-
-The path isn't needed because the directories will show up in the parent
-
-The hashmap will store the object Dir with a key of dir name
-
-A list will store all of the directory names.
-
 At the end loop through list of dirs to get the size of each and tally them like wanted
 
-The only issue might be getting the dir type with the hashmap to work properly. can always override 
+When adding files to a directory need to take it out of hashmap and combine all files 
 */
 class Main {
 	public static void main(String[] args) {
@@ -44,11 +36,13 @@ class Main {
 						if (!(directories.contains(currentDir))){
 							directories.add(currentDir);
 						}
-						//This needs to be reworked to see if it exists already
+						
 						dir.put(currentDir, new Dir(location, line.substring(4, line.length())));
 					} else {
 						if (dir.get(currentDir) == null){
 							dir.put(currentDir, new Dir(location, line.substring(4, line.length())));
+							directories.add(currentDir);
+
 						} else {
 							workingDir = dir.get(currentDir);
 							workingDir.addFiles(new FileStuff(Integer.valueOf(line.substring(0, line.indexOf(" "))), currentDir, line.substring(line.indexOf(" ")+1, line.length())));
@@ -62,7 +56,12 @@ class Main {
 						getInfo = true;
 					} else if (line.equals("$ cd ..")){
 						location = location.substring(0, location.lastIndexOf("@"));
-						//currentDir = location.substring(location.lastIndexOf("@"), location.length());
+						if (location.equals("/")){
+							currentDir = "/";
+						} else {
+							currentDir = location.substring(location.lastIndexOf("@"), location.length());
+						}
+						
 					} else if (line.equals("$ cd /")){
 						location = "/";
 						currentDir = "/";
@@ -74,16 +73,22 @@ class Main {
 
 				
 		}
+		/*
 		System.out.println(dir);
 		System.out.println();
 		System.out.println(dir.size());
 		System.out.println(directories.size());
 		System.out.println();
 		System.out.println(directories);
+		*/
+		int total = 0;
 		for (String i : directories){
-
+			workingDir = dir.get(i);
+			if (workingDir.sum() <= 100000){
+				total += workingDir.sum();
+			}
 		}
-		
+		System.out.println(total);
 			
 			
 		} catch (FileNotFoundException e) {
