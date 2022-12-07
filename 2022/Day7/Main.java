@@ -27,9 +27,12 @@ class Main {
 	}
 
 	public static void part1(){
+		HashMap<String, Dir> dir = new HashMap<String, Dir>();
+
 		ArrayList<String[]> directories = new ArrayList<String[]>();
 		String line = "";
 		String location = "/";
+		String currentDir = "";
 		boolean getInfo = false;
 		try {
 			Scanner scanner = new Scanner(new File("input.txt"));
@@ -37,9 +40,14 @@ class Main {
 				line = scanner.nextLine();
 				if (getInfo && !(line.substring(0, 1).equals("$"))){
 					if (line.substring(0, 3).equals("dir")){
-						directories.add(new String[]{location, line.substring(4,line.length())});
+						dir.put(currentDir, new Dir(location, line.substring(4, line.length())));
 					} else {
-						directories.add(new String[]{location, line.substring(0, line.indexOf(" "))});
+						if (dir.get(currentDir) == null){
+							dir.put(currentDir, new Dir(location, line.substring(4, line.length())));
+						} else {
+							dir.put(dir.get(currentDir).addFiles(new File(Integer.valueOf(line.substring(0, line.indexOf(" "))), currentDir, line.substring(line.indexOf(" ")+1, line.length()))));
+						}
+						
 					}
 				}				
 				if (line.substring(0, 1).equals("$")){
@@ -47,14 +55,17 @@ class Main {
 						getInfo = true;
 					} else if (line.equals("$ cd ..")){
 						location = location.substring(0, location.lastIndexOf("@"));
+						currentDir = location.substring(location.lastIndexOf("@"), location.length());
 					} else if (line.equals("$ cd /")){
 						location = "/";
+						currentDir = "/";
 					} else {
 						location = location + "@" + line.substring(5,line.length());
+						currentDir = line.substring(5, line.length());
 					}
 				}
 
-			HashMap<String, String> dir = new HashMap<String, String>();
+			
 				
 		}
 			

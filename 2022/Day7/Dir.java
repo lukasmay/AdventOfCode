@@ -18,6 +18,11 @@ public class Dir{
 	public Dir(){
 
 	}
+	public Dir(String path, String name){
+		this.path = path;
+		this.name = name;
+		this.size = 0;
+	}
 	
 	public String getName(){
 		return this.name;
@@ -32,6 +37,9 @@ public class Dir{
 
 	public void setFiles(ArrayList<File> files) {
 		this.files = files;
+	}
+	public void addFiles(File file){
+		this.files.add(file);
 	}
 
 	public ArrayList<Dir> getChildDir() {

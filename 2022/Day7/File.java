@@ -4,13 +4,23 @@ public class File{
 	private ArrayList<String> path;
 	private int size;
 	private String directory;
+	private String name;
 
-	public File(ArrayList<String> path, int size, String directory){
+	public File(ArrayList<String> path, int size, String directory, String name){
 		this.path = path;
 		this.size = size;
 		this.directory = directory;
+		this.name = name;
 	}
-	
+	public File(){
+
+	}
+	public File(int size, String directory, String name){
+		this.size = size;
+		this.name = name;
+		this.directory = directory;
+	}
+
 	public ArrayList<String> getPath() {
 		return this.path;
 	}
