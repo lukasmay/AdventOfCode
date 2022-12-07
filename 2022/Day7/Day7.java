@@ -15,7 +15,6 @@ public class Day7 {
 
         String line;
         while ((line = br.readLine()) != null) {
-        //for (String line : input.split("\n")) {
             String[] linearr = line.split(" ");
             if ("$".equals(linearr[0])) {
                 if ("cd".equals(linearr[1])) {
@@ -32,7 +31,16 @@ public class Day7 {
                 currentDirectory.addFile(de);
                 allDirectories.add(de);
             } else {
+                System.out.println(Long.parseLong(linearr[0]));
+                System.out.println(linearr[0]);
                 currentDirectory.addFile(new FileEntry(linearr[1], Long.parseLong(linearr[0])));
+            }
+        }
+
+        int total = 0;
+        for (DirectoryEntry dir : allDirectories){
+            if (dir.size() < 100000){
+                total += dir.size();
             }
         }
 
@@ -53,6 +61,7 @@ public class Day7 {
 
         candidates.sort((a, b) -> (int)(a.size() - b.size()));
 
+        System.out.println(total);
         System.out.println(candidates.get(0).size());
     }
 }
