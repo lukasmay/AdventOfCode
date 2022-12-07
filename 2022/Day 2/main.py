@@ -11,7 +11,7 @@ bonus = 0
 
 
 
-file = open('Data.txt','r')
+file = open('input.txt','r')
 for round in file:
 	round = round[0:3]
 	if ("X" in round):
