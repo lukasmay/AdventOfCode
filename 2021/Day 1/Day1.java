@@ -2,11 +2,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.stream.*;
 
 public class Day1 {
     public static void main(String[] args) {
 		part1();
-		//part2();
 	}
 
     public static void part1(){
@@ -30,4 +30,7 @@ public class Day1 {
 			e.printStackTrace();
 		}
     }
+
+
+    
 }
