@@ -1,6 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+import javax.swing.event.AncestorListener;
+
 import java.util.HashMap;
 /*
  * What I need to store:
@@ -42,31 +45,36 @@ public class Day9 {
                     lastHeadPosition[1] = currentHeadPosition[1];
                     //Moving the Head
                     if (direction.equals("R")){
-                        lastHeadPosition[0] = currentHeadPosition[0];
+                        //lastHeadPosition[0] = currentHeadPosition[0];
                         currentHeadPosition[0] = currentHeadPosition[0] + 1;
                     } else if (direction.equals("L")){
-                        lastHeadPosition[0] = currentHeadPosition[0];
+                        //lastHeadPosition[0] = currentHeadPosition[0];
                         currentHeadPosition[0] = currentHeadPosition[0] - 1;
                     } else if (direction.equals("U")){
-                        lastHeadPosition[1] = currentHeadPosition[1];
+                        //lastHeadPosition[1] = currentHeadPosition[1];
                         currentHeadPosition[1] = currentHeadPosition[1] + 1;
                     } else if (direction.equals("D")){
-                        lastHeadPosition[1] = currentHeadPosition[1];
+                        //lastHeadPosition[1] = currentHeadPosition[1];
                         currentHeadPosition[1] = currentHeadPosition[1] - 1;
                     }
 
                     //Checking and moving tail
                     if (toFar(currentHeadPosition, currentTailPosition)){
-                        currentTailPosition = lastHeadPosition;
+                        currentTailPosition[0] = lastHeadPosition[0];
+                        currentTailPosition[1] = lastHeadPosition[1];
+                       
+                        //System.out.println(" Moved ");
+                        
                     }
                     //System.out.print(" Tail " +currentTailPosition[0] + " " + currentTailPosition[1]);
-                    //System.out.println(" Head " +currentHeadPosition[0] + " " + currentHeadPosition[1]);
+                    //System.out.print(" Head " +currentHeadPosition[0] + " " + currentHeadPosition[1]);
                     //System.out.println(" LastH " +lastHeadPosition[0] + " " + lastHeadPosition[1]);
-                    
-                    String holder = Integer.toString(currentTailPosition[0]) +" "+Integer.toString(currentTailPosition[1]); 
+                    String holder = Integer.toString(currentTailPosition[0]) + " " +Integer.toString(currentTailPosition[1]);
                     tailHasBeen.put(holder, 1);
+                    
                 }
             }
+
             System.out.println(tailHasBeen.size());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -75,11 +83,16 @@ public class Day9 {
 
     public static boolean toFar(Integer[] headposition, Integer[] tailPosition){
         boolean toFar = false;
-        if(Math.abs(tailPosition[0] - headposition[0]) == 2){
+        //System.out.print(" X "+Math.abs(tailPosition[0] - headposition[0]));
+        //System.out.print(" Y "+Math.abs(tailPosition[1] - headposition[1]));
+        
+
+        if(Math.abs(tailPosition[0] - headposition[0]) >= 2){
             toFar = true;
-        } else if (Math.abs(tailPosition[1] - headposition[1]) == 2){
+        } else if (Math.abs(tailPosition[1] - headposition[1]) >= 2){
             toFar = true;
         }
+        //System.out.print(" Check "+ toFar);
         return toFar;
     }
 }
