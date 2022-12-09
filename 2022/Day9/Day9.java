@@ -2,8 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import javax.swing.event.AncestorListener;
-
 import java.util.HashMap;
 /*
  * What I need to store:
@@ -21,8 +19,8 @@ import java.util.HashMap;
 public class Day9 {
     public static void main(String[] args) {
         
-		part1();
-		//part2();
+		//part1();
+		part2();
 	}
 
     public static void part1(){
@@ -37,7 +35,6 @@ public class Day9 {
         try {
             Scanner scanner = new Scanner(new File("2022/input/day9.txt"));
             while (scanner.hasNextLine()) {
-                //Adding Rows to forest
                 line = scanner.nextLine();
                 direction = line.substring(0, 1);
                 for (int i = 0; i < Integer.valueOf(line.substring(2)); i++){
@@ -94,5 +91,58 @@ public class Day9 {
         }
         //System.out.print(" Check "+ toFar);
         return toFar;
+    }
+
+    public static void part2(){
+        String line = "";
+        Integer[][] position = {{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
+        Integer[] lastPosition = {0, 0};
+        String direction = "";
+        boolean move = true;
+        HashMap<String, Integer> tailHasBeen = new HashMap<>();
+        
+
+        try {
+            Scanner scanner = new Scanner(new File("2022/input/day9.txt"));
+            while (scanner.hasNextLine()) {
+                line = scanner.nextLine();
+                direction = line.substring(0, 1);
+                for (int i = 0; i < Integer.valueOf(line.substring(2)); i++){
+                    for (int a = 0; a < 9; a++){
+                        lastPosition[0] = position[a][0]; lastPosition[1] = position[a][1];
+                         //Moving the Head
+                    if (direction.equals("R")){
+                        //lastHeadPosition[0] = currentHeadPosition[0];
+                        position[a][0] = position[a][0] + 1;
+                    } else if (direction.equals("L")){
+                        //lastHeadPosition[0] = currentHeadPosition[0];
+                        position[a][0] = position[a][0] - 1;
+                    } else if (direction.equals("U")){
+                        //lastHeadPosition[1] = currentHeadPosition[1];
+                        position[a][1] = position[a][1] + 1;
+                    } else if (direction.equals("D")){
+                        //lastHeadPosition[1] = currentHeadPosition[1];
+                        position[a][1] = position[a][1] - 1;
+                    }
+
+                    if (toFar(position[a], position[(a+1)])){
+                        position[a+1][0] = lastPosition[0]; position[a+1][1] = lastPosition[1];
+                        //System.out.println(" Moved ");   
+                    } else {
+                        move = false;
+                        
+                    }
+                    
+                }
+                String holder = Integer.toString(position[8][0]) + " " +Integer.toString(position[8][0]);
+                tailHasBeen.put(holder, 1);
+                
+                }
+            }
+
+            System.out.println(tailHasBeen.size());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
