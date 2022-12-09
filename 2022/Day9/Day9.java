@@ -5,15 +5,10 @@ import java.util.Scanner;
 import java.util.HashMap;
 /*
  * What I need to store:
- *      Have a hashmap with key being the location and value being times visited
- *      last head position
- *      current head position
- *      current tail position
- *      Motion of head
+ *     
  * 
- * Logic
- *      if tail location 2 away from head
- *          move tail to last headposition
+ * The problem is that the array has the same values for where the thing moves
+ * This means that the logic not working
  */
 
 public class Day9 {
@@ -134,7 +129,7 @@ public class Day9 {
                     }
                     
                 }
-                String holder = Integer.toString(position[8][0]) + " " +Integer.toString(position[8][0]);
+                String holder = Integer.toString(position[9][0]) + " " +Integer.toString(position[9][0]);
                 tailHasBeen.put(holder, 1);
                 
                 }
