@@ -28,7 +28,7 @@ public class Day9 {
         Integer[] currentTailPosition = {0, 0};
         Integer[] lastHeadPosition = {0, 0};
         String direction = "";
-        HashMap<Integer[], Integer> tailHasBeen = new HashMap<>();
+        HashMap<String, Integer> tailHasBeen = new HashMap<>();
         
 
         try {
@@ -38,18 +38,20 @@ public class Day9 {
                 line = scanner.nextLine();
                 direction = line.substring(0, 1);
                 for (int i = 0; i < Integer.valueOf(line.substring(2)); i++){
-
-                    //Storing last head position
-                    lastHeadPosition = currentHeadPosition;
-
+                    lastHeadPosition[0] = currentHeadPosition[0];
+                    lastHeadPosition[1] = currentHeadPosition[1];
                     //Moving the Head
                     if (direction.equals("R")){
+                        lastHeadPosition[0] = currentHeadPosition[0];
                         currentHeadPosition[0] = currentHeadPosition[0] + 1;
                     } else if (direction.equals("L")){
+                        lastHeadPosition[0] = currentHeadPosition[0];
                         currentHeadPosition[0] = currentHeadPosition[0] - 1;
                     } else if (direction.equals("U")){
+                        lastHeadPosition[1] = currentHeadPosition[1];
                         currentHeadPosition[1] = currentHeadPosition[1] + 1;
                     } else if (direction.equals("D")){
+                        lastHeadPosition[1] = currentHeadPosition[1];
                         currentHeadPosition[1] = currentHeadPosition[1] - 1;
                     }
 
@@ -57,9 +59,14 @@ public class Day9 {
                     if (toFar(currentHeadPosition, currentTailPosition)){
                         currentTailPosition = lastHeadPosition;
                     }
-                    tailHasBeen.put(currentTailPosition, 1);
+                    System.out.print(" Tail " +currentTailPosition[0] + " " + currentTailPosition[1]);
+                    System.out.print(" Head " +currentHeadPosition[0] + " " + currentHeadPosition[1]);
+                    System.out.println(" LastH " +lastHeadPosition[0] + " " + lastHeadPosition[1]);
+                    String holder = Integer.toString(currentTailPosition[0]) +" "+Integer.toString(currentTailPosition[1]); 
+                    tailHasBeen.put(holder, 1);
                 }
             }
+            System.out.println(tailHasBeen.size());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
