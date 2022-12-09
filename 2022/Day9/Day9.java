@@ -32,7 +32,7 @@ public class Day9 {
         
 
         try {
-            Scanner scanner = new Scanner(new File("2022/input/day8.txt"));
+            Scanner scanner = new Scanner(new File("2022/input/day9.txt"));
             while (scanner.hasNextLine()) {
                 //Adding Rows to forest
                 line = scanner.nextLine();
