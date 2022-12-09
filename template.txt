@@ -1,0 +1,23 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+
+public static void main(String[] args) {
+        
+		part1();
+		//part2();
+	}
+
+    public static void part1(){
+        String line = "";
+        try {
+            Scanner scanner = new Scanner(new File("2022/input/day8.txt"));
+            while (scanner.hasNextLine()) {
+                //Adding Rows to forest
+                line = scanner.nextLine();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
