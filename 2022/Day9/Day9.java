@@ -124,6 +124,7 @@ public class Day9 {
                             lastPosition[0] = position[a][0]; 
                             lastPosition[1] = position[a][1];
                         }
+                        //This needs to be position[a-1] to work Sort off. Work through this loop to find out what is wrong
                         if (toFar(position[a], position[(a+1)])){
                             position[a+1][0] = lastPosition[0]; position[a+1][1] = lastPosition[1];
                             //System.out.println(" Moved ");   
