@@ -103,39 +103,45 @@ public class Day9 {
                 line = scanner.nextLine();
                 direction = line.substring(0, 1);
                 for (int i = 0; i < Integer.valueOf(line.substring(2)); i++){
-                    for (int a = 0; a < 9; a++){
-                        lastPosition[0] = position[a][0]; lastPosition[1] = position[a][1];
-                         //Moving the Head
+
+                    //Updates lastPostion to be that of the old head
+                    lastPosition[0] = position[0][0]; lastPosition[1] = position[0][1];
+
+                    //Moves the head
                     if (direction.equals("R")){
-                        //lastHeadPosition[0] = currentHeadPosition[0];
-                        position[a][0] = position[a][0] + 1;
+                        position[0][0] = position[0][0] + 1;
                     } else if (direction.equals("L")){
-                        //lastHeadPosition[0] = currentHeadPosition[0];
-                        position[a][0] = position[a][0] - 1;
+                        position[0][0] = position[0][0] - 1;
                     } else if (direction.equals("U")){
-                        //lastHeadPosition[1] = currentHeadPosition[1];
-                        position[a][1] = position[a][1] + 1;
+                        position[0][1] = position[0][1] + 1;
                     } else if (direction.equals("D")){
-                        //lastHeadPosition[1] = currentHeadPosition[1];
-                        position[a][1] = position[a][1] - 1;
+                        position[0][1] = position[0][1] - 1;
                     }
 
-                    if (toFar(position[a], position[(a+1)])){
-                        position[a+1][0] = lastPosition[0]; position[a+1][1] = lastPosition[1];
-                        //System.out.println(" Moved ");   
-                    } else {
-                        move = false;
+                    //Loops through all of the following ropes
+                    for (int a = 0; a < 9; a++){
+                        if (a > 0){
+                            lastPosition[0] = position[a][0]; 
+                            lastPosition[1] = position[a][1];
+                        }
+                        if (toFar(position[a], position[(a+1)])){
+                            position[a+1][0] = lastPosition[0]; position[a+1][1] = lastPosition[1];
+                            //System.out.println(" Moved ");   
+                        } else {
+                            move = false;
+                            break;
+                        }
                         
                     }
-                    
-                }
-                String holder = Integer.toString(position[9][0]) + " " +Integer.toString(position[9][0]);
+                String holder = Integer.toString(position[9][0]) + " " +Integer.toString(position[9][1]);
                 tailHasBeen.put(holder, 1);
                 
                 }
             }
+            //tailHasBeen.forEach((key, value) -> System.out.println(key + ": " + value));
 
             System.out.println(tailHasBeen.size());
+            System.out.println("2443");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
