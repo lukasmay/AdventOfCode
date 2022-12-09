@@ -59,9 +59,10 @@ public class Day9 {
                     if (toFar(currentHeadPosition, currentTailPosition)){
                         currentTailPosition = lastHeadPosition;
                     }
-                    System.out.print(" Tail " +currentTailPosition[0] + " " + currentTailPosition[1]);
-                    System.out.print(" Head " +currentHeadPosition[0] + " " + currentHeadPosition[1]);
-                    System.out.println(" LastH " +lastHeadPosition[0] + " " + lastHeadPosition[1]);
+                    //System.out.print(" Tail " +currentTailPosition[0] + " " + currentTailPosition[1]);
+                    //System.out.println(" Head " +currentHeadPosition[0] + " " + currentHeadPosition[1]);
+                    //System.out.println(" LastH " +lastHeadPosition[0] + " " + lastHeadPosition[1]);
+                    
                     String holder = Integer.toString(currentTailPosition[0]) +" "+Integer.toString(currentTailPosition[1]); 
                     tailHasBeen.put(holder, 1);
                 }
