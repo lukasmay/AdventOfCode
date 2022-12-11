@@ -1,2 +1,2 @@
 # AdventOfCode
-All the advent of code I have done
+2022 is the first year I am doing this. I tried a couple examples from past years but not to much.
