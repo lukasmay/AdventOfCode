@@ -51,6 +51,8 @@ public class Day10 {
             }
             if (((cycle-20)%40) == 0){
                 totalStrength += holdStrength * (20 + (40 * multiplicity));
+                System.out.print(holdStrength);
+                System.out.println(" "+totalStrength);
                 multiplicity++;
             }
             
