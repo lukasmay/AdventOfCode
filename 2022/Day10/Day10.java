@@ -23,6 +23,39 @@ public class Day10 {
             e.printStackTrace();
         }
         //Loop through the inputs for the running stuff
+        boolean moreInput = true;
+        int cycle = 0;
+        int inputIndex = 0;
+        int inputDuration = 1;
+        int strength = 0;
+        int holdStrength = 0;
+        int totalStrength = 0;
+        int multiplicity = 0;
+
+        while (moreInput){
+            cycle++;
+            inputDuration--;
+            if (inputDuration == 0){
+                holdStrength += strength;
+                if (inputs.get(inputIndex).substring(0, 1).equals("a")){
+                    inputDuration = 2;
+                    strength = Integer.valueOf(inputs.get(inputIndex).substring(5));
+                } else {
+                    inputDuration = 1;
+                }
+                inputIndex++;
+                if (inputIndex == inputs.size()){
+                    moreInput = false;
+                }
+                
+            }
+            if (((cycle-20)%40) == 0){
+                totalStrength += holdStrength * (20 + (40 * multiplicity));
+                multiplicity++;
+            }
+            
+        }
+        System.out.println(totalStrength);
     }
     
 }
