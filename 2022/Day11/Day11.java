@@ -28,7 +28,7 @@ public class Day11 {
         ArrayList<Monkey> monkeys = new ArrayList<>();
 
         String name = "";
-        Integer[] items = {0, 0};
+        ArrayList<Integer> items = new ArrayList<>();
         String operation = "";
         String test = "";
         String ifTrue = "";
@@ -42,7 +42,9 @@ public class Day11 {
                 if (counter == 6){
 
                     //Input the name for the ifTrue false stuff then a search could be done to add them the item thrown
-
+                    name = data[0];
+                    items.add(Integer.valueOf(data[1].substring(18, data[1].indexOf(","))));
+                    //starting items 
                     //I need to parse the lines to get the data that I want
                     //Use the variables above to store the data
                     //This is where the monkey will be created
