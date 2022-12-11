@@ -28,18 +28,25 @@ public class Day10 {
         int inputIndex = 0;
         int inputDuration = 1;
         int strength = 0;
-        int holdStrength = 0;
+        int registry = 1;
         int totalStrength = 0;
         int multiplicity = 0;
+        boolean added = true;
 
         while (moreInput){
             cycle++;
             inputDuration--;
+           
             if (inputDuration == 0){
-                holdStrength += strength;
+                if (!added){
+                    registry = registry + strength;
+                    added = true;
+                }
                 if (inputs.get(inputIndex).substring(0, 1).equals("a")){
                     inputDuration = 2;
+                    added = false;
                     strength = Integer.valueOf(inputs.get(inputIndex).substring(5));
+                    //System.out.println(" "+cycle);
                 } else {
                     inputDuration = 1;
                 }
@@ -50,11 +57,13 @@ public class Day10 {
                 
             }
             if (((cycle-20)%40) == 0){
-                totalStrength += holdStrength * (20 + (40 * multiplicity));
-                System.out.print(holdStrength);
-                System.out.println(" "+totalStrength);
+                totalStrength = totalStrength + registry * (20 + (40 * multiplicity));
+                //System.out.print(registry);
+                //System.out.println(" "+totalStrength);
                 multiplicity++;
+                
             }
+            
             
         }
         System.out.println(totalStrength);
