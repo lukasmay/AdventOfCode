@@ -7,6 +7,7 @@ public class Monkey {
     private String test;
     private String ifTrue;
     private String ifFalse;
+    private int itemsSeen; //Need to add the code for this. THis is the answer stuff
 
     public Monkey(String name, ArrayList<Integer> items, String operation, String test, String ifTrue, String ifFalse) {
         this.name = name;
