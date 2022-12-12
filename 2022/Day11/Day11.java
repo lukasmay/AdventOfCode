@@ -28,6 +28,7 @@ public class Day11 {
         ArrayList<Monkey> monkeys = new ArrayList<>();
 
         String name = "";
+        
         ArrayList<Integer> items = new ArrayList<>();
         String operation = "";
         String test = "";
@@ -35,20 +36,31 @@ public class Day11 {
         String ifFalse = "";
 
         try {
-            Scanner scanner = new Scanner(new File("2022/input/day8.txt"));
+            Scanner scanner = new Scanner(new File("2022/input/day11.txt"));
             while (scanner.hasNextLine()) {
                 line = scanner.nextLine();
+                if (line.equals("\n")){
+                    line = scanner.nextLine();
+                }
                 data[counter] = line;
-                if (counter == 6){
-
+                if (counter == 5){
+                    for (String i : data){
+                        System.out.println(i);
+                    }
                     //Input the name for the ifTrue false stuff then a search could be done to add them the item thrown
                     name = data[0];
-                    items.add(Integer.valueOf(data[1].substring(18, data[1].indexOf(","))));
-                    //starting items 
-                    //I need to parse the lines to get the data that I want
-                    //Use the variables above to store the data
-                    //This is where the monkey will be created
-                    monkeys.add(new Monkey());
+                    data[1] = data[1].substring(17);
+                    operation = data[2].substring(20);
+                    test = data[3].substring(22);
+                    ifTrue = data[4];//.substring(24);
+                    ifFalse = data[5];
+                    //System.out.println(data[1]);
+                    String[] holderItem = ((data[1].replaceAll("\\s", "").split(",")));
+                    for (String holder : holderItem){
+                        //System.out.println(holder);
+                        //items.add(Integer.valueOf(holder));
+                    }
+                    //monkeys.add(new Monkey(name, items, operation, test, ifTrue, ifFalse));                    
                     counter = -1;
                 }
                 counter++;
