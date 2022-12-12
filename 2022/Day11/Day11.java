@@ -43,7 +43,7 @@ public class Day11 {
                 data[counter] = line;
                 if (counter == 6){
                     //Input the name for the ifTrue false stuff then a search could be done to add them the item thrown
-                    name = data[0];
+                    name = data[0].substring(7, 8);
                     data[1] = data[1].substring(17);
                     operation = data[2].substring(23);
                     test = data[3].substring(22);
@@ -87,9 +87,12 @@ public class Day11 {
 
                     if (processNumber % Integer.valueOf(currentMonkey.getTest()) == 0){
                         monkeys.get(Integer.valueOf(currentMonkey.getIfTrue())).addItem(processNumber);
-                        
+                        monkeys.get(Integer.valueOf(currentMonkey.getName())).addItemsSeen();
+                        monkeys.get(Integer.valueOf(currentMonkey.getName())).getItems().remove(i);
                     } else {
                         monkeys.get(Integer.valueOf(currentMonkey.getIfFalse())).addItem(processNumber);
+                        monkeys.get(Integer.valueOf(currentMonkey.getName())).addItemsSeen();
+                        monkeys.get(Integer.valueOf(currentMonkey.getName())).getItems().remove(i);
                     }
 
 

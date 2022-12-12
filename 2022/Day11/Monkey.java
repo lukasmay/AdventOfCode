@@ -85,4 +85,8 @@ public class Monkey {
     public void setItemsSeen(int itemsSeen) {
         this.itemsSeen = itemsSeen;
     }
+
+    public void addItemsSeen(){
+        this.itemsSeen++;
+    }
 }
