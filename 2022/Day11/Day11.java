@@ -67,7 +67,10 @@ public class Day11 {
         int processNumber = 0;
          for (int rounds = 0; rounds < 20; rounds++){
             for (Monkey currentMonkey : monkeys){
-                for (Integer currentItem : currentMonkey.getItems()){
+                
+                Integer currentItem = 0;
+                for (int i = 0; i < currentMonkey.getItems().size(); i++){
+                    currentItem = currentMonkey.getItems().get(i);
                     if (currentMonkey.getOperation().substring(0).equals("*")){
                         if (currentMonkey.getOperation().substring(2).equals("old")){
                             processNumber = currentItem*currentItem;
@@ -84,11 +87,12 @@ public class Day11 {
 
                     if (processNumber % Integer.valueOf(currentMonkey.getTest()) == 0){
                         monkeys.get(Integer.valueOf(currentMonkey.getIfTrue())).addItem(processNumber);
+                        
                     } else {
                         monkeys.get(Integer.valueOf(currentMonkey.getIfFalse())).addItem(processNumber);
                     }
 
-                    
+
                 }
             }
          }
