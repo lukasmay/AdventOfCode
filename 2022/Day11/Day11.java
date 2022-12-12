@@ -84,6 +84,7 @@ public class Day11 {
                             processNumber = currentItem*Integer.valueOf(currentMonkey.getOperation().substring(2));
                         }
                     }
+                    processNumber = Math.round(processNumber/3);
 
                     if (processNumber % Integer.valueOf(currentMonkey.getTest()) == 0){
                         monkeys.get(Integer.valueOf(currentMonkey.getIfTrue())).addItem(processNumber);
@@ -94,10 +95,30 @@ public class Day11 {
                         monkeys.get(Integer.valueOf(currentMonkey.getName())).addItemsSeen();
                         monkeys.get(Integer.valueOf(currentMonkey.getName())).getItems().remove(i);
                     }
-
-
                 }
             }
          }
+
+         String firstName = "";
+         int firstSeen = 0;
+         String secondName = "";
+         int secondSeen = 0;
+         
+         for (Monkey listMonkey : monkeys){
+            if (listMonkey.getItemsSeen() > secondSeen){
+                if (listMonkey.getItemsSeen() > firstSeen){
+                    firstName = listMonkey.getName();
+                    firstSeen = listMonkey.getItemsSeen();
+                } else {
+                    secondName = listMonkey.getName();
+                    secondSeen = listMonkey.getItemsSeen();
+                }
+            }
+         }
+         for (int i = 0; i < 4; i++){
+            System.out.println(monkeys.get(i).getItemsSeen());
+         }
+         
+         
     }
 }
