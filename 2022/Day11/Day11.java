@@ -49,7 +49,7 @@ public class Day11 {
                     //Use the variables above to store the data
                     //This is where the monkey will be created
                     monkeys.add(new Monkey());
-                    counter = 0;
+                    counter = -1;
                 }
                 counter++;
             }
