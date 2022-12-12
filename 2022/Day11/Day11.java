@@ -69,10 +69,26 @@ public class Day11 {
             for (Monkey currentMonkey : monkeys){
                 for (Integer currentItem : currentMonkey.getItems()){
                     if (currentMonkey.getOperation().substring(0).equals("*")){
-                        if (currentMonkey.getOperation.substring(2).equals("old")){
+                        if (currentMonkey.getOperation().substring(2).equals("old")){
                             processNumber = currentItem*currentItem;
+                        } else {
+                            processNumber = currentItem*Integer.valueOf(currentMonkey.getOperation().substring(2));
+                        }
+                    } else if (currentMonkey.getOperation().substring(0).equals("+")){
+                        if (currentMonkey.getOperation().substring(2).equals("old")){
+                            processNumber = currentItem*currentItem;
+                        } else {
+                            processNumber = currentItem*Integer.valueOf(currentMonkey.getOperation().substring(2));
                         }
                     }
+
+                    if (processNumber % Integer.valueOf(currentMonkey.getTest()) == 0){
+                        monkeys.get(Integer.valueOf(currentMonkey.getIfTrue())).addItem(processNumber);
+                    } else {
+                        monkeys.get(Integer.valueOf(currentMonkey.getIfFalse())).addItem(processNumber);
+                    }
+
+                    
                 }
             }
          }

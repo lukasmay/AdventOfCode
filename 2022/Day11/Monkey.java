@@ -21,6 +21,10 @@ public class Monkey {
     public Monkey(){
 
     }
+
+    public void addItem(Integer item){
+        this.items.add(item);
+    }
     
     public String print(){
         return "\nNew Monkey\nName: "+this.name+"\nItems: "+this.items+"\nOperation: "+this.operation+"\nTest: "+this.test+"\nIfTrue: "+this.ifTrue+"\nIfFalse: "+this.ifFalse;
