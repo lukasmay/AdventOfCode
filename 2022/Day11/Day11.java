@@ -64,8 +64,17 @@ public class Day11 {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        for (Monkey i : monkeys){
-            System.out.println(i.print());
+        int processNumber = 0;
+         for (int rounds = 0; rounds < 20; rounds++){
+            for (Monkey currentMonkey : monkeys){
+                for (Integer currentItem : currentMonkey.getItems()){
+                    if (currentMonkey.getOperation().substring(0).equals("*")){
+                        if (currentMonkey.getOperation.substring(2).equals("old")){
+                            processNumber = currentItem*currentItem;
+                        }
+                    }
+                }
+            }
          }
     }
 }
