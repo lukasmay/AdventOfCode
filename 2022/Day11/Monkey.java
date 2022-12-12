@@ -16,11 +16,15 @@ public class Monkey {
         this.test = test;
         this.ifTrue = ifTrue;
         this.ifFalse = ifFalse;
+        itemsSeen = 0;
     }
     public Monkey(){
 
     }
     
+    public String print(){
+        return "\nNew Monkey\nName: "+this.name+"\nItems: "+this.items+"\nOperation: "+this.operation+"\nTest: "+this.test+"\nIfTrue: "+this.ifTrue+"\nIfFalse: "+this.ifFalse;
+    }
 
     public String getName() {
         return this.name;
@@ -54,19 +58,27 @@ public class Monkey {
         this.test = test;
     }
 
-    public Monkey getIfTrue() {
+    public String getIfTrue() {
         return this.ifTrue;
     }
 
-    public void setIfTrue(Monkey ifTrue) {
+    public void setIfTrue(String ifTrue) {
         this.ifTrue = ifTrue;
     }
 
-    public Monkey getIfFalse() {
+    public String getIfFalse() {
         return this.ifFalse;
     }
 
-    public void setIfFalse(Monkey ifFalse) {
+    public void setIfFalse(String ifFalse) {
         this.ifFalse = ifFalse;
+    }
+
+    public int getItemsSeen() {
+        return this.itemsSeen;
+    }
+
+    public void setItemsSeen(int itemsSeen) {
+        this.itemsSeen = itemsSeen;
     }
 }
