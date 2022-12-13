@@ -10,13 +10,24 @@ public class Day13{
     		//part2();
     	}
 
-        public static String getSection(String packet, int section){
-            String beginSection = "";
-            String answer = "";
-            for (int i = 0; i < section; i++){
-            beginSection = packet.substring(0, packet.indexOf("]"));
-            answer = beginSection.substring(beginSection.lastIndexOf("[")+1);
-            packet = beginSection.substring(beginSection.indexOf("]")+1);
+        public static String[] getSection(String packet){
+            String section = "";
+            
+            long count = packet.chars().filter(ch -> ch == '[').count();
+            String[] answer = new String[(int) count];
+
+
+            long emptyN = packet.chars().filter(ch -> ch == ',').count();
+            if (emptyN == 0){
+                for (int i = 0; i < count; i++){
+                    //answer[i] = packet.substring(packet.indexOf("[")+1, the correct end bracket);
+                }
+            }
+
+            for (int i = 0; i < count; i++){
+            section = packet.substring(0, packet.indexOf(","));
+            
+            packet = section.substring(section.indexOf("]")+1);
             }
             return answer;
         }
@@ -34,7 +45,8 @@ public class Day13{
                     if (line.trim().equals("")){
                         lineCounter = -1;
 
-                        System.out.println(packet1);
+                        getSection(packet1);
+                        //System.out.println(packet1);
                         
                     } else {
                         if (lineCounter == 0){
