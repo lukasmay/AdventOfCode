@@ -6,6 +6,7 @@ import java.util.HashMap;
 public class Day12 {
     public static void main(String[] args) {
         
+        
 		part1();
 		//part2();
 	}

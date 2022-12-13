@@ -1,18 +1,13 @@
-/**
- * An implementation of BFS with an adjacency list.
- *
- * <p>Time Complexity: O(V + E)
- *
- * @author William Fiset, william.alexandre.fiset@gmail.com
- */
-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.List;
 
-public class BreadthFirstSearchAdjacencyListIterative {
+public class Day12P1 {
 
   public static class Edge {
     int from, to, cost;
@@ -28,7 +23,7 @@ public class BreadthFirstSearchAdjacencyListIterative {
   private Integer[] prev;
   private List<List<Edge>> graph;
 
-  public BreadthFirstSearchAdjacencyListIterative(List<List<Edge>> graph) {
+  public Day12P1(List<List<Edge>> graph) {
     if (graph == null) throw new IllegalArgumentException("Graph can not be null");
     n = graph.size();
     this.graph = graph;
@@ -105,8 +100,32 @@ public class BreadthFirstSearchAdjacencyListIterative {
   /* BFS example. */
 
   public static void main(String[] args) {
-    // BFS example #1 from slides.
-    final int n = 13;
+    String line = "";
+    char[][] map = new char[5][5];
+    int a = 0;
+    int rE,cE,rS,cS = 0;
+    try {
+      Scanner scanner = new Scanner(new File("2022/input/day12.txt"));
+      while (scanner.hasNextLine()) {
+          line = scanner.nextLine();
+          map[a] = line.toCharArray();
+          int i = 0;
+          for (Character letter : map[a]){
+              if (letter == 'S'){
+                  rS = a;
+                  cS = i;
+              } else if (letter == 'E'){
+                  rE = a;
+                  cE = i;
+              }
+          }
+          a++;
+      }
+  } catch (FileNotFoundException e) {
+      e.printStackTrace();
+  }
+    
+    final int n = 25;
     List<List<Edge>> graph = createEmptyGraph(n);
 
     addUnweightedUndirectedEdge(graph, 0, 7);
@@ -125,8 +144,8 @@ public class BreadthFirstSearchAdjacencyListIterative {
     addUnweightedUndirectedEdge(graph, 10, 9);
     addUnweightedUndirectedEdge(graph, 9, 8);
 
-    BreadthFirstSearchAdjacencyListIterative solver;
-    solver = new BreadthFirstSearchAdjacencyListIterative(graph);
+    Day12P1 solver;
+    solver = new Day12P1(graph);
 
     int start = 10, end = 5;
     List<Integer> path = solver.reconstructPath(start, end);
