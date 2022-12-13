@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.List;
+import java.util.HashMap;
 
 public class Day12P1 {
 
@@ -101,23 +102,36 @@ public class Day12P1 {
 
   public static void main(String[] args) {
     String line = "";
-    char[][] map = new char[5][5];
+    char[][] stringMap = new char[5][8];
+    Integer[][] intMap = new Integer[5][8];
+    HashMap<Character, Integer> alphebet = new HashMap<>();
+    Character[] alphabetchar = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    for (int i = 0; i < 26; i++){
+      alphebet.put(alphabetchar[i], i+1);
+    }
+
     int a = 0;
     int rE,cE,rS,cS = 0;
     try {
       Scanner scanner = new Scanner(new File("2022/input/day12.txt"));
       while (scanner.hasNextLine()) {
           line = scanner.nextLine();
-          map[a] = line.toCharArray();
+          stringMap[a] = line.toCharArray();
           int i = 0;
-          for (Character letter : map[a]){
+          for (char letter : stringMap[a]){
               if (letter == 'S'){
                   rS = a;
                   cS = i;
+                  intMap[a][i] = 0;
               } else if (letter == 'E'){
                   rE = a;
                   cE = i;
+                  intMap[a][i] = -1;
+              } else {
+                intMap[a][i] = alphebet.get(letter);
               }
+
+              i++;
           }
           a++;
       }
@@ -126,8 +140,39 @@ public class Day12P1 {
   }
     
     final int n = 25;
+    final int columbNumber = 5;
+    final int rowNumber = 5;
+    final int[] directionC = {-1, 1, 0, 0};
+    final int[] directionR = {0, 0, 1, -1};     
     List<List<Edge>> graph = createEmptyGraph(n);
+  /* //Go through all the edge checks with the for loops and then the rest with the four loops. In each case need to check if the things is posible if so add it to the edge list
+    for (int i = 0; i < columbNumber; i++){
+      for (int node = 0; a < rowNumber; a++){
+        //i == 0 || a == 0 || i == columbNumber-1 || a == rowNumber-1
+        if (i == 0 && a == 0){
+          if ()
+          addUnweightedUndirectedEdge(graph, i-1, a);
+          addUnweightedUndirectedEdge(graph, i, a-1);
+        } else if (i == columbNumber-1 && a == 0) {
+          addUnweightedUndirectedEdge(graph, i, a);
+          addUnweightedUndirectedEdge(graph, i, a-1);
+        } else if (i == 0 && a == rowNumber-1) {
+          addUnweightedUndirectedEdge(graph, i-1, a);
+          addUnweightedUndirectedEdge(graph, i, a-1);
+        } else if (i == columbNumber-1 && a == rowNumber-1){
+          addUnweightedUndirectedEdge(graph, i-1, a);
+          addUnweightedUndirectedEdge(graph, i, a-1);
+        } else if (i == 0) {
+          for (int dir = 0; dir < 3; dir++){
+            
+          }
+        }
+        for (int dir = 0; dir < 4; dir++){
 
+        }
+      }
+    }
+    */
     addUnweightedUndirectedEdge(graph, 0, 7);
     addUnweightedUndirectedEdge(graph, 0, 9);
     addUnweightedUndirectedEdge(graph, 0, 11);
@@ -143,6 +188,7 @@ public class Day12P1 {
     addUnweightedUndirectedEdge(graph, 1, 10);
     addUnweightedUndirectedEdge(graph, 10, 9);
     addUnweightedUndirectedEdge(graph, 9, 8);
+    addUnweightedUndirectedEdge(graph, 10, 5);
 
     Day12P1 solver;
     solver = new Day12P1(graph);
