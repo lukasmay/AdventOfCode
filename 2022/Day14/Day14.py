@@ -1,7 +1,5 @@
 b = set()
-
 abyss = 0
-
 for line in open("2022/input/day14.txt"):
     x = [list(map(int, p.split(","))) for p in line.strip().split(" -> ")]
     for (x1, y1), (x2, y2) in zip(x, x[1:]):
@@ -11,9 +9,7 @@ for line in open("2022/input/day14.txt"):
             for y in range(y1, y2 + 1):
                 b.add(x + y * 1j)
                 abyss = max(abyss, y + 1)
-
 t = 0
-
 while True:
     s = 500
     while True:
