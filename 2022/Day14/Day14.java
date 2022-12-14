@@ -1,6 +1,10 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.ArrayList;
 
 public class Day14{
 
@@ -13,6 +17,7 @@ public class Day14{
         public static void part1(){
             String line = "";
             String[] holder1 = {"", ""};
+            HashMap<String, String> map = new HashMap<>();
             
             
             try {
@@ -20,20 +25,35 @@ public class Day14{
                 while (scanner.hasNextLine()) {
                     line = scanner.nextLine();
                     String[] rockLinePostition = line.split(" ");
-                    int[] rockLine = new int[rockLinePostition.length*2];
-                    int count = 0;
+                    int[][] rockLine = new int[rockLinePostition.length][2];
                     for (int i = 0; i < rockLinePostition.length; i++){
                        holder1 = rockLinePostition[i].split(",");
-                       rockLine[count] = Integer.valueOf(holder1[0]);
-                       count++;
-                       rockLine[count] = Integer.valueOf(holder1[1]);
-                       count++;
+                       rockLine[i][0] = Integer.valueOf(holder1[0]);
+                       rockLine[i][1] = Integer.valueOf(holder1[1]);
                     }
-
-
+                    for (int i = 0; i < rockLine.length; i++){
+                        if (rockLine[i][0] - rockLine[i+1][0] < 0){
+                            for (int a = 0; a < Math.abs(rockLine[i][0] - rockLine[i+1][0]); a++){
+                                map.put((rockLine[i][0] + a) + "," + rockLine[i][1], "#");
+                            }
+                        } else if (rockLine[i][0] - rockLine[i+1][0] > 0){
+                            for (int a = 0; a < Math.abs(rockLine[i][0] - rockLine[i+1][0]); a++){
+                                map.put((rockLine[i][0] - a) + "," + rockLine[i][1], "#");
+                            }
+                        } else if (rockLine[i][1] - rockLine[i][1] == 0){
+                            for (int a = 0; a < Math.abs(rockLine[i][0] - rockLine[i+1][0]); a++){
+                                map.put((rockLine[i][1] + a) + "," + rockLine[i][1], "#");
+                            }
+                        } else {
+                            for (int a = 0; a < Math.abs(rockLine[i][0] - rockLine[i+1][0]); a++){
+                                map.put((rockLine[i][1] - a) + "," + rockLine[i][1], "#");
+                            }
+                        }
+                    }
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+            
         }
 }
