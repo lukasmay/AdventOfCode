@@ -18,6 +18,7 @@ public class Template{
                     line = scanner.nextLine();
 
                 }
+            scanner.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }

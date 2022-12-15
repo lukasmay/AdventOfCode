@@ -61,6 +61,7 @@ public class Day11 {
                 }
                 counter++;
             }
+            scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

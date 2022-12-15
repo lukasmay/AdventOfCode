@@ -19,6 +19,7 @@ public class Day10 {
                 line = scanner.nextLine();
                 inputs.add(line);
             }
+            scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

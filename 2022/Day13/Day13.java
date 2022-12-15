@@ -57,6 +57,7 @@ public class Day13{
                     }
                     lineCounter++;
                 }
+                scanner.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }

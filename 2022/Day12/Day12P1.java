@@ -135,6 +135,7 @@ public class Day12P1 {
           }
           a++;
       }
+      scanner.close();
   } catch (FileNotFoundException e) {
       e.printStackTrace();
   }

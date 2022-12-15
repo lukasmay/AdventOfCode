@@ -68,6 +68,7 @@ public class Day9 {
             }
 
             System.out.println(tailHasBeen.size());
+            scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -143,6 +144,7 @@ public class Day9 {
 
             System.out.println(tailHasBeen.size());
             System.out.println("2443");
+            scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
