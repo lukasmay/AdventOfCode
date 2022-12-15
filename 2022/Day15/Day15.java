@@ -16,7 +16,6 @@ public class Day15{
             String line = "";
             String sencor = "";
             String beacon = "";
-            int distance = 0;
             int maxX = 0;
             int maxY = 0;
             int minX = 0;
@@ -36,8 +35,6 @@ public class Day15{
                     
                     beaconLocation[0] = Integer.valueOf(beacon.substring(beacon.indexOf("="), beacon.indexOf(",")));
                     beaconLocation[1] = Integer.valueOf(beacon.substring(beacon.lastIndexOf("=")));
-
-                    distance = Math.abs(sencorLocation[0] - beaconLocation[0]) + Math.abs(sencorLocation[1] - beaconLocation[1]);
 
                     location.add(sencorLocation);
                     location.add(beaconLocation);
@@ -66,10 +63,40 @@ public class Day15{
             }
             int width = Math.abs(maxX - minX);
             int height = Math.abs(maxY - minY); 
-            int[][] map = new int[width][height];
+            int distance = 0;
+            int mover = 0;
+            int level = 0;
+            String[][] map = new String[width][height];
 
             //for all the values subtract the minX and Y to make those 0.
-            
+            for (int i = 0; i < location.size()-1; i++){
+                distance = Math.abs(location.get(i)[0] - location.get(i+1)[0]) + Math.abs(location.get(i)[1] - location.get(i+1)[1]);
+                
+                /* I need to create a loop to create the area
+                        Loop through by finding the position of a tip and then go down one and add two more to either side
+                 * Then I need to check how many out of the line are known 
+                 *      Might have to add minimum back to it. 
+                 */
+
+                // for the upper side of the area
+                for (int a = 0; a < distance; a++){
+                    level = distance - 1;// the incriment to *2 and subtract from distance to go up one in rows to make #
+                    for (int z = level/-2; z < level/2; z++){
+                        map[location.get(i)[0]-minX+z][location.get(i)[1]-minY+a] = "#";//Not tested but should work
+                        // the z should start -some length away 1 higher each time
+                    }
+                    
+                }
+                // For the underside of the area
+                for (int a = 0; a < distance; a++){
+                    level = distance - 1;
+                    for (int z = 0; z < level; z++){
+                        map[location.get(i)[0]-minX+mover][location.get(i)[1]-minY+mover] = "#";//Doesn't work
+                    }
+                    
+                }
+                i++;
+            }
 
         }
 
