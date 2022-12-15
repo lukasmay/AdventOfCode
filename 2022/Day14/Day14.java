@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.ArrayList;
 
 /* I just need to transition to an array[][] for storing the rocks
  *      This will allow for me to loop through the loop

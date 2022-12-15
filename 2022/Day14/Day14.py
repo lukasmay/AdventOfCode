@@ -17,6 +17,7 @@ t = 0
 while 500 not in b:
     s = 500
     while True:
+        print(x)
         if s.imag >= abyss:
             break
         if s + 1j not in b:
