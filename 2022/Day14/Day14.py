@@ -1,36 +1,48 @@
-b = set()
+import re
 
-abyss = 0
+pattern = re.compile(r"-?\d+")
 
-for line in open("2022/input/day14.txt"):
-    x = [list(map(int, p.split(","))) for p in line.strip().split(" -> ")]
-    for (x1, y1), (x2, y2) in zip(x, x[1:]):
-        x1, x2 = sorted([x1, x2])
-        y1, y2 = sorted([y1, y2])
-        for x in range(x1, x2 + 1):
-            for y in range(y1, y2 + 1):
-                b.add(x + y * 1j)
-                abyss = max(abyss, y + 1)
+lines = [list(map(int, pattern.findall(line))) for line in open("2022/input/day15.txt")]
 
-t = 0
+M = 4000000
 
-while 500 not in b:
-    s = 500
-    while True:
-        print(x)
-        if s.imag >= abyss:
+for Y in range(M + 1):
+    intervals = []
+
+    for sx, sy, bx, by in lines:
+        d = abs(sx - bx) + abs(sy - by)
+        o = d - abs(sy - Y)
+
+        if o < 0:
+            continue
+
+        lx = sx - o
+        hx = sx + o
+        
+        intervals.append((lx, hx))
+
+    intervals.sort()
+
+    q = []
+
+    for lo, hi in intervals:
+        if not q:
+            q.append([lo, hi])
+            continue
+
+        qlo, qhi = q[-1]
+
+        if lo > qhi + 1:
+            q.append([lo, hi])
+            continue
+        
+        q[-1][1] = max(qhi, hi)
+    
+    x = 0
+    for lo, hi in q:
+        if x < lo:
+            print(x * 4000000 + Y)
+            exit(0)
+        x = max(x, hi + 1)
+        if x > M:
             break
-        if s + 1j not in b:
-            s += 1j
-            continue
-        if s + 1j - 1 not in b:
-            s += 1j - 1
-            continue
-        if s + 1j + 1 not in b:
-            s += 1j + 1
-            continue
-        break
-    b.add(s)
-    t += 1
-
-print(t)
