@@ -47,7 +47,7 @@ public class Day16{
                 s[i] = valves.get(i).getName();                
             }
             printAllRecursive(s.length, s, ' ');
-
+            System.out.println("Done");
             //Checks if posibility possible
 
 
@@ -84,9 +84,9 @@ public class Day16{
         private static <T> void printArray(T[] elements, char delimiter) {
             String delimiterSpace = delimiter + " ";
             for(int i = 0; i < elements.length; i++) {
-                System.out.print(elements[i] + delimiterSpace);
+                //System.out.print(elements[i] + delimiterSpace);
             }
-            System.out.print('\n');
+            //System.out.print('\n');
         }
         
 }
