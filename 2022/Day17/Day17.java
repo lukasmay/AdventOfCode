@@ -4,6 +4,10 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Day17{
+    /* Have a brick class to store all the peices locations. 
+     * This allows me to bypass the harder check. 
+     * The check allows me to make 
+     */
 
     public static void main(String[] args) {
 
@@ -12,18 +16,32 @@ public class Day17{
     	}
 
         public static void part1(){
-            String line = "";
             try {
                 Scanner scanner = new Scanner(new File("2022/input/day17.txt"));
                 while (scanner.hasNextLine()) {
-                    line = scanner.nextLine();
+                    char[] line = scanner.nextLine().toCharArray();
                     int rockType = 0;
                     ArrayList<Character[]> map = new ArrayList<>();
                     Character[] row = new Character[7];
-
-                    for (char dir : line.toCharArray()){
-
+                    int highestPoint = 0;
+                    boolean stillMove = true;
+                    for (int i = 0; i < 4; i++){
+                        map.add(new Character[7]);
+                        for (int a = 0; a < 7; a++){
+                            if (i == 1){
+                                map.get(i)[a] = '#';
+                            } else {
+                                map.get(i)[a] = '.';
+                            }
+                        }
                     }
+                    for (int i = 0; i < 2022; i++){
+                        while (stillMove){
+                            //
+                        }
+                    }
+
+                    
 
                 }
             scanner.close();
@@ -67,6 +85,13 @@ public class Day17{
                     rock[1][0] = '#';
                     rock[1][1] = '#';
                     break;
+            }
+            for (int i = 0; i < 4; i++){
+                for (int a = 0; a < 4; a++){
+                    if (rock[i][a] != '#'){
+                        rock[i][a] = '.';
+                    }
+                }
             }
 
             return rock;
