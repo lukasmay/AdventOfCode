@@ -117,12 +117,22 @@ public class Day10 {
                 }
                 
             }
-            if (((cycle-20)%40) == 0){
+            if (((cycle-20)-40) == 0){
                 totalStrength = totalStrength + registry * (20 + (40 * multiplicity));
                 //System.out.print(registry);
                 //System.out.println(" "+totalStrength);
                 multiplicity++;
                 
+            } else if (((cycle-20)-80) == 0){
+                
+            } else if (((cycle-20)-120) == 0){
+
+            } else if (((cycle-20)-160) == 0){
+
+            } else if (((cycle-20)-200) == 0){
+
+            } else if (((cycle-20)-240) == 0){
+
             }
             
             
