@@ -30,7 +30,7 @@ public class GFG {
 		permutations.add(holder);
 	}
 
-	public getHolder(){
+	public ArrayList<String> getHolder(){
 		return this.holder;
 	}
 }
