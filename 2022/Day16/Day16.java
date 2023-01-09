@@ -22,7 +22,7 @@ public class Day16{
                 Scanner scanner = new Scanner(new File("2022/input/day16.txt"));
                 while (scanner.hasNextLine()) {
                     line = scanner.nextLine();
-                    valves.add(new Valve(Integer.valueOf(line.substring(23, line.indexOf(";"))), line.substring(6, 8), line.substring(line.indexOf(",")-2).strip().split(",")));
+                    valves.add(new Valve(Integer.valueOf(line.substring(23, line.indexOf(";"))), line.substring(6, 8), line.substring(line.indexOf(",")-2).split(",")));
 
                 }
             scanner.close();
