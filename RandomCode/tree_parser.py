@@ -18,6 +18,9 @@
 from ast import literal_eval
 import sys
 
+#from RandomCode.alphabeta import AlphaBeta
+#from RandomCode.miniMax import MiniMax
+
 ##########################
 ###### PARSE DATA ########
 ##########################
@@ -86,6 +89,8 @@ def main():
     data_list = parse_data_as_list(filename)
     data_tree = GameTree()
     data_tree.build_tree(data_list)
+    #test = AlphaBeta()
+    
 
 
 main()
